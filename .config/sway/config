@@ -59,9 +59,8 @@ for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="zoom"] floating enable
 
 exec swayidle \
-    #timeout 1500 'swaylock -i $bgimg' \
-    timeout 1500 'swaylock -S --clock --effect-blur 3x2' \
-    timeout 1800 'swaymsg "output * dpms off"' \
+    timeout 300 'swaylock -S --clock --effect-blur 3x2' \
+    timeout 420 'swaymsg "output * dpms off"' \
           resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -S --clock --effect-blur 3x2'
 
