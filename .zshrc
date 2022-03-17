@@ -72,6 +72,10 @@ export VISUAL=nvim
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland-egl
+export XDG_CURRENT_DESKTOP=sway
+export TODO_DIR="$HOME/todo_items"
+export TODO_FILE="$TODO_DIR/todo.txt"
+export DONE_FILE="$TODO_DIR/done.txt"
 
 
 # Alias command for running/compiling kotlin code more script like
