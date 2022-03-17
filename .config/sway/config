@@ -15,7 +15,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 #set $term sakura
-set $term alacritty
+#set $term alacritty
+set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | dmenu | xargs swaymsg exec
@@ -23,10 +24,11 @@ set $highlight #3daee9
 set $prompt #18b218
 set $menu bemenu-run -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
 
-set $bgimg ~/Downloads/stretched-1920-1080-26105.jpg
+# set $bgimg ~/Downloads/stretched-1920-1080-26105.jpg
+set $bgimg ~/Downloads/927368.jpg
 
 # Look and Feel modifiers
-gaps inner 10
+#gaps inner 10
 default_border pixel 3
 
 ### Output configuration
@@ -54,6 +56,7 @@ output * bg $bgimg stretch
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="zoom"] floating enable
 
 exec swayidle \
     #timeout 1500 'swaylock -i $bgimg' \
@@ -118,7 +121,7 @@ input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     # Volume keys
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pFor proper working of libinput-gestures, you must be a member of the input group to have permission to read the touchpad device:acmd list-sinks |awk '/* index:/{print $3}') +5%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
     bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
     # Brightness
@@ -283,6 +286,9 @@ bar {
 
 # Notifications
 exec mako
+
+# update dbus env has vars for screen sharing
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Some electron and Swing apps still need this :(
 xwayland enable
