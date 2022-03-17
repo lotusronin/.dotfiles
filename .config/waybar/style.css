@@ -49,6 +49,10 @@ window#waybar.hidden {
     opacity: 0.4;
 }
 
+window#waybar.empty #window {
+    opacity: 0.0;
+}
+
 #window {
     padding: 0 10px;
     margin: 0 2px;
