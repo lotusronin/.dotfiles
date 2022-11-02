@@ -25,7 +25,7 @@ set $prompt #18b218
 set $menu bemenu-run -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
 
 # set $bgimg ~/Downloads/stretched-1920-1080-26105.jpg
-set $bgimg ~/Downloads/927368.jpg
+set $bgimg ~/wallpapers/927368.jpg
 
 # Look and Feel modifiers
 #gaps inner 10
@@ -57,6 +57,7 @@ output * bg $bgimg stretch
 # resumed. It will also lock your screen before your computer goes to sleep.
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="zoom"] floating enable
+for_window [app_id="zoom"] inhibit_idle focus
 
 exec swayidle \
     timeout 300 'swaylock -S --clock --effect-blur 3x2' \
@@ -120,9 +121,9 @@ input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     # Volume keys
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-    bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_SINK@ 5%+
+    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_SINK@ 5%-
+    bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_SINK@ toggle
     # Brightness
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
