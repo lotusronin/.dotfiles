@@ -1,3 +1,4 @@
+@import url("../../.cache/wal/wallpaper_colors-gtk3.css");
 /* modified from https://gitlab.com/jbauernberger/dotfiles/-/blob/master/.config/waybar/style.css */
 @define-color bg-color rgb(60, 65, 60);               /* #3C413C */
 @define-color bg-color-tray rgb (60, 65, 68);         /* #3C4144 */
@@ -35,12 +36,21 @@
 
 }
 
+button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    text-shadow: inherit;
+    box-shadow: inherit;
+}
+
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.0);
+    background-color: @background;
+    color: @foreground;
+    /* background-color: @bg-color-1; */
+    /* background-color: rgba(43, 48, 59, 0.0); */
     /* background-color: rgba(43, 48, 59, 0.5); */
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     border-bottom: none;
-    color: @fg-color;
+    /* color: @fg-color; */
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -55,18 +65,25 @@ window#waybar.empty #window {
 
 #window {
     padding: 0 10px;
-    margin: 0 2px;
+    margin: 0 8px;
+    /*
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    background-color: @bg-color;
+    border-bottom-right-radius: 4px;*/
+    /* background-color: @bg-color; */
+    background-color: @background;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: @fg-color;
+    padding: 0 16px;
+    /* padding: 0 5px; */
+    /*background-color: transparent;*/
+    /*background-color: @bg-color;
+    color: @fg-color;*/
+    background-color: @color1;
+    color: @color15;
+    border-radius: 0;
     border-bottom: 3px solid transparent;
 }
 
@@ -74,12 +91,15 @@ window#waybar.empty #window {
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
     box-shadow: inherit;
+    text-shadow: inherit;
     border-bottom: 3px solid @fg-color;
 }
 
 #workspaces button.focused {
-    background-color: @bg-color;
-    border-bottom: 3px solid @fg-color;
+    /* background-color: @bg-color;*/
+    background-color: @color1;
+    /* border-bottom: 3px solid @fg-color; */
+    border-bottom: 3px solid @color15;
 }
 
 #workspaces button.urgent {
@@ -109,8 +129,11 @@ window#waybar.empty #window {
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    background-color: @bg-color-1;
-    color: @fg-color;
+    border-radius: 0;
+    /*background-color: @bg-color-1;
+    color: @fg-color;*/
+    background-color: @color2;
+    color: @color15;
 }
 
 #backlight {
@@ -118,8 +141,11 @@ window#waybar.empty #window {
     /* margin: 0 4px; */
     margin: 1px 0px 1px 0px;
     /* background-color: @bg-color-3; */
-    background-color: @bg-color-6;
-    color: @fg-color;
+    /* background-color: @bg-color-6;*/
+    /* color: @fg-color; */
+    border-radius: 0;
+    background-color: @color2;
+    color: @color15;
 }
 
 #battery {
@@ -127,12 +153,16 @@ window#waybar.empty #window {
     /* margin: 0 4px; */
     margin: 1px 0px 1px 0px;
     /* background-color: @bg-color-4; */
-    background-color: @bg-color-6;
-    color: @fg-color;
+    /*background-color: @bg-color-6;
+    color: @fg-color;*/
+    border-radius: 0;
+    background-color: @color2;
+    color: @color15;
 }
 #battery.charging {
     color: @fg-color;
-    background-color: @bg-color;
+    /*background-color: @bg-color;*/
+    background-color: rgb(0,179,0);
 }
 #battery.warning:not(.charging) {
     color: @alert-fg-color;
@@ -154,8 +184,11 @@ window#waybar.empty #window {
     margin: 1px 4px 1px 0px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    background-color: @bg-color-6;
-    color: @fg-color;
+    /*background-color: @bg-color-6;
+    color: @fg-color;*/
+    border-radius: 0;
+    background-color: @color2;
+    color: @color15;
 }
 
 #network.disconnected {
@@ -169,8 +202,11 @@ window#waybar.empty #window {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     /* background-color: @bg-color-12; */
-    background-color: @bg-color-6;
-    color: @fg-color;
+    /*background-color: @bg-color-6;
+    color: @fg-color;*/
+    border-radius: 0;
+    background-color: @color2;
+    color: @color15;
 }
 
 #pulseaudio.muted {
@@ -183,29 +219,47 @@ window#waybar.empty #window {
     /* margin: 0 4px; */
     margin: 1px 0px 1px 0px;
     /* background-color: @bg-color-13; */
-    background-color: @bg-color-5;
-    color: @fg-color;
+    border-radius: 0;
+    /*background-color: @bg-color-5;
+    color: @fg-color;*/
+    background-color: @color3;
+    color: @color15;
 }
 
 #memory {
     padding: 0 10px;
     /* margin: 0 4px; */
-    margin: 1px 4px 1px 0px;
+    /*margin: 1px 4px 1px 0px;*/
+    margin: 1px 0px 1px 0px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
-    background-color: @bg-color-5;
-    color: @fg-color;
+    border-radius: 0;
+    /*background-color: @bg-color-5;
+    color: @fg-color;*/
+    background-color: @color3;
+    color: @color15;
 }
 
 #disk {
     padding: 0 10px;
     /* margin: 0 4px; */
-    margin: 1px 0px 1px 0px;
+    /* margin: 1px 0px 1px 0px; */
+    margin: 1px 4px 1px 0px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    border-radius: 0;
     /* background-color: @bg-color-8; */
-    background-color: @bg-color-5;
-    color: @fg-color;
+    /* background-color: @bg-color-5;
+    color: @fg-color;*/
+    background-color: @color3;
+    color: @color15;
+}
+
+#custom-poweropts {
+    /* background-color: @bg-color-6;
+    color: @fg-color; */
+    background-color: @color1;
+    color: @color15;
 }
 
 @keyframes blink {
