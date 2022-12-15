@@ -248,7 +248,7 @@ bindsym $mod+r mode "resize"
 # Sourced from https://github.com/rbnis/dotfiles/blob/master/.config/sway/config
 set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
 mode "$mode_system" {
-    bindsym l exec swaylock -S --clock --effect-blur 3x2, mode "default"
+    bindsym l exec ~/.local/bin/screenlock.sh, mode "default"
     bindsym e exit
     bindsym s exec systemctl suspend, mode "default"
     bindsym r exec systemctl reboot, mode "default"
