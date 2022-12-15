@@ -1,26 +1,7 @@
 @import url("../../.cache/wal/wallpaper_colors-gtk3.css");
 /* modified from https://gitlab.com/jbauernberger/dotfiles/-/blob/master/.config/waybar/style.css */
 @define-color bg-color rgb(60, 65, 60);               /* #3C413C */
-@define-color bg-color-tray rgb (60, 65, 68);         /* #3C4144 */
-@define-color bg-color-0 rgb (60, 65, 68);            /* #3C4144 */
-@define-color bg-color-1 rgb(71, 95, 148);            /* #475f94 */
-@define-color bg-color-2 rgb(16, 122, 176);           /* #107AB0 */
-@define-color bg-color-3 rgb(1, 115, 116);            /* #017374 */
-@define-color bg-color-4 rgb(31, 59, 77);             /* #1F3B4D */
-@define-color bg-color-5 rgb(16, 166, 116);           /* #10A674 */
-@define-color bg-color-6 rgb(73, 132, 184);           /* #4984B8 */
-@define-color bg-color-7 rgb(0, 1, 51);               /* #000133 */
-@define-color bg-color-8 rgb(8, 120, 127);            /* #08787F */
-@define-color bg-color-9 rgb(33, 71, 97);             /* #214761 */
-@define-color bg-color-10 rgb(108, 52, 97);           /* #6C3461 */
-@define-color bg-color-11 rgb(0, 82, 73);             /* #005249 */
-@define-color bg-color-12 rgb(49, 102, 138);          /* #31668A */
-@define-color bg-color-13 rgb(106, 110, 9);           /* #6A6E09 */
-@define-color bg-color-14 rgb(91, 124, 153);          /* #5B7C99 */
-@define-color bg-color-15 rgb(60, 65, 68);            /* #1D2021 */
-@define-color bg-color-16 rgb(41, 41, 61);            /* #29293D  */
 
-@define-color fg-color rgb (243, 244, 245);           /* #f3f4f5 */
 @define-color alert-bg-color rgb (189, 44, 64);       /* #bd2c40 */
 @define-color alert-fg-color rgb (255,255,255);       /* #FFFFFF */
 @define-color inactive-fg-color rgb(144, 153, 162);   /* #9099a2 */
@@ -30,10 +11,10 @@
     border: none;
     /* border-radius: 4; */
     font-family: Dejavu Sans Mono, FontAwesome, Material Icons, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     min-height: 0;
     opacity: 1.0;
-
+    text-shadow: rgb(0,0,0), 2, 2, 2;
 }
 
 button:hover {
@@ -43,14 +24,9 @@ button:hover {
 }
 
 window#waybar {
-    background-color: @background;
+    background-color: @color2;
     color: @foreground;
-    /* background-color: @bg-color-1; */
-    /* background-color: rgba(43, 48, 59, 0.0); */
-    /* background-color: rgba(43, 48, 59, 0.5); */
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     border-bottom: none;
-    /* color: @fg-color; */
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -66,22 +42,13 @@ window#waybar.empty #window {
 #window {
     padding: 0 10px;
     margin: 0 8px;
-    /*
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;*/
-    /* background-color: @bg-color; */
     background-color: @background;
 }
 
 #workspaces button {
     padding: 0 16px;
     /* padding: 0 5px; */
-    /*background-color: transparent;*/
-    /*background-color: @bg-color;
-    color: @fg-color;*/
-    background-color: @color1;
+    background-color: @color3;
     color: @color15;
     border-radius: 0;
     border-bottom: 3px solid transparent;
@@ -92,13 +59,11 @@ window#waybar.empty #window {
     background: rgba(0, 0, 0, 0.2);
     box-shadow: inherit;
     text-shadow: inherit;
-    border-bottom: 3px solid @fg-color;
+    border-bottom: 3px solid @foreground;
 }
 
 #workspaces button.focused {
-    /* background-color: @bg-color;*/
-    background-color: @color1;
-    /* border-bottom: 3px solid @fg-color; */
+    background-color: @color3;
     border-bottom: 3px solid @color15;
 }
 
@@ -109,59 +74,19 @@ window#waybar.empty #window {
 #mode {
     padding: 0 10px;
     margin: 0 4px;
-    background-color: @bg-color;
-    border-bottom: 3px solid @fg-color;
+    background-color: @color0;
+    border-bottom: 3px solid @foreground;
 }
 
 #tray {
- /*   border-top: 3px solid @fg-color; */
     padding: 0 10px;
-    margin: 0 4px;
-    background-color: @bg-color-tray;
-    color: @fg-color;
+    margin: 0 0px;
+    background-color: @color4;
+    color: @foreground;
 }
 
-
-#clock {
-    padding: 0 10px;
-    margin: 0 2px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-radius: 0;
-    /*background-color: @bg-color-1;
-    color: @fg-color;*/
-    background-color: @color2;
-    color: @color15;
-}
-
-#backlight {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    margin: 1px 0px 1px 0px;
-    /* background-color: @bg-color-3; */
-    /* background-color: @bg-color-6;*/
-    /* color: @fg-color; */
-    border-radius: 0;
-    background-color: @color2;
-    color: @color15;
-}
-
-#battery {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    margin: 1px 0px 1px 0px;
-    /* background-color: @bg-color-4; */
-    /*background-color: @bg-color-6;
-    color: @fg-color;*/
-    border-radius: 0;
-    background-color: @color2;
-    color: @color15;
-}
 #battery.charging {
-    color: @fg-color;
-    /*background-color: @bg-color;*/
+    color: @foreground;
     background-color: rgb(0,179,0);
 }
 #battery.warning:not(.charging) {
@@ -170,7 +95,7 @@ window#waybar.empty #window {
 }
 #battery.critical:not(.charging) {
     background-color: @alert-bg-color;
-    color: @fg-color;
+    color: @foreground;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -178,34 +103,17 @@ window#waybar.empty #window {
     animation-direction: alternate;
 }
 
-#network {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    margin: 1px 4px 1px 0px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    /*background-color: @bg-color-6;
-    color: @fg-color;*/
-    border-radius: 0;
-    background-color: @color2;
-    color: @color15;
-}
-
 #network.disconnected {
     background-color: @alert-bg-color;
 }
 
-#pulseaudio {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    margin: 1px 0px 1px 4px;
+#clock, #battery, #backlight, #network, #pulseaudio {
+    padding: 0 8px;
+    margin: 0px 0px 0px 0px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
-    /* background-color: @bg-color-12; */
-    /*background-color: @bg-color-6;
-    color: @fg-color;*/
     border-radius: 0;
-    background-color: @color2;
+    background-color: @color3;
     color: @color15;
 }
 
@@ -214,57 +122,31 @@ window#waybar.empty #window {
     color: @inactive-fg-color;
 }
 
-#cpu {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    margin: 1px 0px 1px 0px;
-    /* background-color: @bg-color-13; */
+#cpu, #disk, #memory {
+    padding: 0 8px;
+    /* margin: 1px 0px 1px 0px;*/
+    margin: 0px 0px 0px 0px;
+    border-top-right-radius:0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
     border-radius: 0;
-    /*background-color: @bg-color-5;
-    color: @fg-color;*/
-    background-color: @color3;
-    color: @color15;
-}
-
-#memory {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    /*margin: 1px 4px 1px 0px;*/
-    margin: 1px 0px 1px 0px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-radius: 0;
-    /*background-color: @bg-color-5;
-    color: @fg-color;*/
-    background-color: @color3;
-    color: @color15;
-}
-
-#disk {
-    padding: 0 10px;
-    /* margin: 0 4px; */
-    /* margin: 1px 0px 1px 0px; */
-    margin: 1px 4px 1px 0px;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-radius: 0;
-    /* background-color: @bg-color-8; */
-    /* background-color: @bg-color-5;
-    color: @fg-color;*/
     background-color: @color3;
     color: @color15;
 }
 
 #custom-poweropts {
-    /* background-color: @bg-color-6;
-    color: @fg-color; */
-    background-color: @color1;
-    color: @color15;
+    padding: 0 8px;
+    margin: 0px 0px 0px 0px;
+    /*background-color: @color6;*/
+    background-color: @color4;
+    border-radius: 0;
+    color: @background;
 }
 
 @keyframes blink {
     to {
-        background-color: @fg-color;
+        background-color: @foreground;
         color: @bg-color;
     }
 }

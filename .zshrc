@@ -35,8 +35,12 @@ alias cower='cower -c'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
+alias gv='git diff'
 alias gp='git push'
 alias gpl='git pull'
+alias gss='git commit'
+alias mm='cd'
+alias mf='cp'
 alias grep='rg'
 alias android-studio='_JAVA_AWT_WM_NONREPARENTING=1 android-studio'
 alias firefox='MOZ_GTK_TITLEBAR_DECORATION=client firefox'
@@ -62,7 +66,16 @@ setprompt() {
   PS2=$'%_>'
 }
 
-chpwd() ls
+chpwd() {
+    case $PWD in
+        $HOME )
+            # no ls on term start or home
+            ;;
+        * )
+            ls
+            ;;
+    esac
+}
 
 setprompt
 autoload -U add-zsh-hook
@@ -76,6 +89,9 @@ export XDG_CURRENT_DESKTOP=sway
 export TODO_DIR="$HOME/todo_items"
 export TODO_FILE="$TODO_DIR/todo.txt"
 export DONE_FILE="$TODO_DIR/done.txt"
+
+#Load pywal color scheme
+(cat ~/.cache/wal/sequences &)
 
 
 # Alias command for running/compiling kotlin code more script like

@@ -1,0 +1,29 @@
+{
+    "label" : "lock",
+    "action" : "swaylock -S --clock --effect-blur 3x2",
+    "text" : "Lock",
+    "keybind" : "l",
+    "circular" : true
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown",
+    "keybind" : "s",
+    "circular" : true
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend",
+    "keybind" : "u",
+    "circular" : true
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r",
+    "circular" : true
+}
+

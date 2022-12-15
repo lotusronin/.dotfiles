@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 
 wpctl set-mute @DEFAULT_SINK@ toggle
@@ -37,4 +37,4 @@ if [[ $muted = "" ]]; then
 fi
 
 makoctl dismiss --all && \
-  notify-send -i audio-volume-$icon_type-symbolic.symbolic "$note_text"
+  notify-send -a "audiomute.sh" -i audio-volume-$icon_type-symbolic.symbolic "$note_text"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 
 operator='+'
@@ -50,4 +50,4 @@ level=$(get_volume_intensity)
 #echo $level
 
 makoctl dismiss --all && \
-  notify-send -i audio-volume-$level-symbolic.symbolic "$volume %"
+  notify-send -a "audiochange.sh" -i audio-volume-$level-symbolic.symbolic "$volume %"

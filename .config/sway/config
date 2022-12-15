@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include "$HOME/.cache/wal/colors-sway"
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -20,22 +22,19 @@ set $term foot
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | dmenu | xargs swaymsg exec
-set $highlight #3daee9
-set $prompt #18b218
-set $menu bemenu-run -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
-
-# set $bgimg ~/Downloads/stretched-1920-1080-26105.jpg
-#set $bgimg ~/wallpapers/927368.jpg
-set $bgimg ~/wallpapers/chunli_sf6_fan_wallpaper.png
+set $highlight $color2
+set $prompt $background
+set $menu bemenu-run -n -p "▶" --tf "$highlight" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
 
 # Look and Feel modifiers
 #gaps inner 10
-default_border pixel 3
+default_border pixel 2
+smart_borders on
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $bgimg stretch
+output * bg $wallpaper stretch
 #
 # Example configuration:
 #
@@ -59,6 +58,8 @@ output * bg $bgimg stretch
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="zoom"] floating enable
 for_window [app_id="zoom"] inhibit_idle focus
+
+client.focused $color6 $color6 $foreground
 
 exec swayidle \
     timeout 300 'swaylock -S --clock --effect-blur 3x2' \
@@ -106,7 +107,7 @@ input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+q exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -121,13 +122,13 @@ input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
-    # Volume keys
+    # Volume keys + Brightness
     bindsym XF86AudioRaiseVolume exec ~/.local/bin/audiochange.sh "+"
     bindsym XF86AudioLowerVolume exec ~/.local/bin/audiochange.sh "-"
     bindsym XF86AudioMute exec ~/.local/bin/audiomute.sh
-    # Brightness
-    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+    bindsym XF86MonBrightnessDown exec ~/.local/bin/brightnesschange.sh 5%-
+    bindsym XF86MonBrightnessUp exec ~/.local/bin/brightnesschange.sh 5%+
+
     # Print Screen
     bindsym Print exec ~/.local/bin/screenshot.sh
     bindsym $mod+Print exec ~/.local/bin/screenrecord.sh
@@ -291,6 +292,9 @@ exec mako
 
 # update dbus env has vars for screen sharing
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# nm-applet
+exec nm-applet --indicator
 
 # Some electron and Swing apps still need this :(
 xwayland enable
