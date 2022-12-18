@@ -1,0 +1,12 @@
+input "10900:21057:G2Touch_Multi-Touch_by_G2TSP" {
+    tap enabled
+    natural_scroll enabled
+    events enabled
+    drag enabled
+}
+
+input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
+    tap enabled
+    natural_scroll disabled
+    events enabled
+}

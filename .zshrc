@@ -27,11 +27,11 @@ setopt auto_remove_slash #remove trailing slash from completions on typing
 autoload -Uz vcs_info
 
 
+source ~/.($HOST)_zshrc
+
 # Aliases
 alias ls='echo "You should be using Rust!"; ls --color=auto'
 alias vim='nvim'
-alias pkgupg='sudo pacman -Syu'
-alias cower='cower -c'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'

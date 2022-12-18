@@ -1,0 +1,2 @@
+alias pkgupg='sudo pacman -Syu'
+alias cower='cower -c'
